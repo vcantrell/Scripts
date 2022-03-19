@@ -1,0 +1,25 @@
+#!/bin/sh
+if [ -d /compose/core ] 
+then
+	cd /compose/core
+	docker compose pull > /dev/null 2>&1 
+	docker compose up -d --remove-orphans
+fi
+if [ -d /compose/services ] 
+then
+	cd /compose/services
+	docker compose pull > /dev/null 2>&1 
+	docker compose up -d --remove-orphans
+fi
+if [ -d /compose/vinceflix ] 
+then
+	cd /compose/vinceflix
+	docker compose pull > /dev/null 2>&1 
+	docker compose up -d --remove-orphans
+fi
+if [ -d /compose/wordpress ] 
+then
+	cd /compose/wordpress
+	docker compose pull > /dev/null 2>&1 
+	docker compose up -d --remove-orphans
+fi
