@@ -8,11 +8,11 @@ sudo apt-fast dist-upgrade -y # Perform updates
 echo "Ubuntu Update Complete!"
 echo "---------------------------------------------------------------"
 echo "2. Commencing Ubuntu Cleanup"
-apt-fast autoclean
+apt-fast autoclean -y
 echo "Outdated packages have been removed"
-apt-fast clean
+apt-fast clean -y
 echo "The apt cache has been emptied"
-apt-fast autoremove
+apt-fast autoremove -y
 echo "Packages installed as dependencies no longer needed have been removed"
 echo "---------------------------------------------------------------"
 echo "3. Commencing Docker Pull and Up"
