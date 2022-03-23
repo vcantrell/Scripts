@@ -3,21 +3,17 @@ echo "---------------------------------------------------------------"
 echo "Commencing System & Docker Update & Cleanup: `date`"
 echo "---------------------------------------------------------------"
 echo "1. Updating Ubuntu"
-sudo apt-fast update # Get updates
-sudo apt-fast dist-upgrade # Perform updates
+sudo apt-fast update -y # Get updates
+sudo apt-fast dist-upgrade -y # Perform updates
 echo "Ubuntu Update Complete!"
-sleep 3
 echo "---------------------------------------------------------------"
 echo "2. Commencing Ubuntu Cleanup"
-apt-fast autoclean
+apt-fast autoclean -y
 echo "Outdated packages have been removed"
-apt-fast clean
+apt-fast clean -y
 echo "The apt cache has been emptied"
-apt-fast autoremove
+apt-fast autoremove -y
 echo "Packages installed as dependencies no longer needed have been removed"
-localepurge
-echo "LocalePurge deleted unnecessary local files"
-sleep 3
 echo "---------------------------------------------------------------"
 echo "3. Commencing Docker Pull and Up"
 # Do a pull then an update
