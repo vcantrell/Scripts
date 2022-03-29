@@ -5,6 +5,12 @@ then
 	docker compose pull > /dev/null 2>&1 
 	docker compose up -d --remove-orphans
 fi
+if [ -d /compose/hass ] 
+then
+	cd /compose/hass
+	docker compose pull > /dev/null 2>&1 
+	docker compose up -d --remove-orphans
+fi
 if [ -d /compose/services ] 
 then
 	cd /compose/services
