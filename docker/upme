@@ -11,7 +11,7 @@ process_directory() {
             # Change to the directory
             cd "$dir" || exit
             # Pull the docker compose, suppressing stdout and stderr
-            docker compose pull
+            docker compose pull > /dev/null 2>&1
             docker compose up -d --remove-orphans
             # Go back to the previous directory
             cd - > /dev/null 2>&1
