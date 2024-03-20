@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Define the base directory to iterate through
+base_dir="/compose"
+
+# Function to process each directory
+process_directory() {
+    for dir in "$1"/*; do
+        if [ -d "$dir" ]; then
+            echo "Processing $dir"
+            # Change to the directory
+            cd "$dir" || exit
+            # Pull the docker compose, suppressing stdout and stderr
+            docker compose pull
+            docker compose up -d --remove-orphans
+            # Go back to the previous directory
+            cd - > /dev/null 2>&1
+            # Recursively process subdirectories
+            process_directory "$dir"
+        fi
+    done
+}
+
+# Start processing from the base directory
+process_directory "$base_dir"
+
+# After processing all directories, run docker system prune
+echo "Running docker system prune --volumes -af"
+docker system prune --volumes -af
+
+echo "Process completed."
